@@ -1,6 +1,25 @@
 // TODO: Learn about gitignore and figure out how to maintain a separate yaml file
-// TODO: Attach a license
 // TODO: Publish publicly
+/*
+groupme-discord-bridge
+A bridge bot which will send a message to a GroupMe Group any time a user enters or leaves a Discord channel or starts playing a game.
+
+Copyright (C) 2022 Dennis Sendros
+Contact: DSendros (a) gmail (punto) com
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*/
 
 // Imports -----------------------------------------------------------------------------------------------------------------
 const { Discord, Client, GatewayIntentBits, ActivityType } = require('discord.js');
