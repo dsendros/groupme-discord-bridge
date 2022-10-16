@@ -180,12 +180,12 @@ discordClient.on('voiceStateUpdate', (oldState, newState) => {
   if (newState.channelId === null) {
     const user = getUserNameFromVoiceState(oldState);
     const channel = getChannelFromVoiceState(oldState);
-    sendGroupMeMessage(user + " left " + guild, () => { });
+    sendGroupMeMessage(user + " left " + channel, () => { });
   }
   else if (oldState.channelID == null) {
     const user = getUserNameFromVoiceState(newState);
     const channel = getChannelFromVoiceState(newState);
-    sendGroupMeMessage(user + " joined " + guild, () => { });
+    sendGroupMeMessage(user + " joined " + channel, () => { });
   }
 })
 
