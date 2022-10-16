@@ -1,4 +1,3 @@
-// TODO: Learn about gitignore and figure out how to maintain a separate yaml file
 // TODO: Publish publicly
 /*
 groupme-discord-bridge
