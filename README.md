@@ -5,7 +5,7 @@ A bridge bot which will send a message to a GroupMe Group any time a user enters
 - NodeJS installed.
 
 ### Limitations
-The program can only bridge a single GroupMe Group and a single Discord Channel together. 
+The program can only bridge a single GroupMe Group and a single Discord Channel together.
 
 ## Setting up
 First you can clone this repository (or download it) and then run ```npm install``` to fetch dependencies.

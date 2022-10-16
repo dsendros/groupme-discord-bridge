@@ -68,9 +68,15 @@ function getUsernameFromPresence(presence) {
   }
 }
 
-function getUserNameFromVoiceState(voiceState)  {
-  if (voiceState.member !== null && voiceState.member.user !== null && voiceState.member.user.username !== null)  {
+function getUserNameFromVoiceState(voiceState) {
+  if (voiceState.member !== null && voiceState.member.user !== null && voiceState.member.user.username !== null) {
     return voiceState.member.user.username;
+  }
+}
+
+function getChannelFromVoiceState(voiceState) {
+  if (voiceState.channel !== null) {
+    return voiceState.channel.name;
   }
 }
 // Program Main ----------------------------------------------------------------------------------------------------------------------------
@@ -143,8 +149,6 @@ discordClient.on("presenceUpdate", (oldPresence, newPresence) => {
 
 /*
 If a user leaves or joins a channel, announce it to the Groupme. 
-NOTE: It will announce leaving the guild, not the specific channel. 
-If anyone knows how to make the announcement channel-specific, let me know.
 */
 discordClient.on('voiceStateUpdate', (oldState, newState) => {
   //Next line useful for debugging.
@@ -152,12 +156,12 @@ discordClient.on('voiceStateUpdate', (oldState, newState) => {
 
   if (newState.channelId === null) {
     const user = getUserNameFromVoiceState(oldState);
-    const guild = oldState.guild.name;
+    const channel = getChannelFromVoiceState(oldState);
     sendGroupMeMessage(user + " left " + guild, () => { });
   }
   else if (oldState.channelID == null) {
     const user = getUserNameFromVoiceState(newState);
-    const guild = newState.guild.name;
+    const channel = getChannelFromVoiceState(newState);
     sendGroupMeMessage(user + " joined " + guild, () => { });
   }
 })
