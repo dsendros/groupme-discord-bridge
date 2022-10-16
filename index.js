@@ -156,7 +156,6 @@ discordClient.on('voiceStateUpdate', (oldState, newState) => {
     sendGroupMeMessage(user + " left " + guild, () => { });
   }
   else if (oldState.channelID == null) {
-    console.log(newState);
     const user = getUserNameFromVoiceState(newState);
     const guild = newState.guild.name;
     sendGroupMeMessage(user + " joined " + guild, () => { });
