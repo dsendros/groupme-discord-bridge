@@ -4,6 +4,7 @@ node_modules/
 # Replit Files
 .replit
 replit.nix 
+.breakpoints
 
 # Bot Config Files
 bridgeBot.yml
