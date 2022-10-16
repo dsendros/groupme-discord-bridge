@@ -1,9 +1,9 @@
 # Dependency directories
 node_modules/
 
-# Bot Config Files
-bridgeBot.yml
-
 # Replit Files
 .replit
 replit.nix 
+
+# Bot Config Files
+bridgeBot.yml
