@@ -1,3 +1,7 @@
+// TODO: Learn about gitignore and figure out how to maintain a separate yaml file
+// TODO: Attach a license
+// TODO: Publish publicly
+
 // Imports -----------------------------------------------------------------------------------------------------------------
 const { Discord, Client, GatewayIntentBits, ActivityType } = require('discord.js');
 const YAML = require("yamljs");
