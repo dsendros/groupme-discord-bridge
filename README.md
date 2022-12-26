@@ -21,6 +21,7 @@ discord:
 groupme:
     botId: ""
     accessToken: ""
+blacklist: []
 ```
 
 Next you will need to create a Discord bot account on the Discord developers page. You can use this [handy guide](https://discordpy.readthedocs.io/en/stable/discord.html). You will need to enable *Presence Intent* and *Server Members Intent* under the *Privileged Gateways Intents* section. You do not need to enable other *Bot Permissions*. Once you've added the Discord bot to your Guild you'll need to copy the "Token" and put them in the ```bridgeBot.yml``` config file. It goes to the "token" field under "discord" in the YAML file. Also fill in the "username" field with the Discord bot's username.
@@ -34,6 +35,7 @@ discord:
 groupme:
     botId: ""
     accessToken: ""
+blacklist: []
 ```
 
 Now you will need the Guild and Channel IDs for the Discord side. In Discord, you'll need to enable Developer mode (you can find this option under *User Settings* (cog in bottom left) > *Advanced*. Right click on the Discord Guild (or server as it is called in the client) and click *Copy ID*. You can paste that in the "guild" field in ```bridgeBot.yml```. Do the same for the voice channel by right clicking on the voice channel and clicking *Copy ID*. Paste that in the "channel" field.
@@ -47,6 +49,7 @@ discord:
 groupme:
     botId: ""
     accessToken: ""
+blacklist: []
 ```
 
 Finally we need to set up the GroupMe bot. Head over to https://dev.groupme.com/ and sign in with your GroupMe account. Go to the *Bots* and click on the *Create a Bot* button. Select which GroupMe group you want the bot to be in, and give it a Name and an Avatar URL (a URL to a picture) if you chose to do so.
@@ -62,6 +65,22 @@ discord:
 groupme:
     botId: "THE GROUPME BOT's ID"
     accessToken: "YOUR GROUPME ACCESS TOKEN"
+blacklist: []
 ```
 
 Now you should be all set! Save the config file and give the bridge a run by running ```node index.js```.
+
+## Blacklisting
+If there are users on your discord you don't want to receive notifications about in your GroupMe, add their usernames in bridgebot.yml under blacklist in quotes, like so.
+
+```yaml
+discord:
+    username: "YOUR DISCORD BOT's USERNAME HERE"
+    token: "YOUR DISCORD TOKEN HERE"
+    guild: 'THE GUILD ID YOU COPIED'
+    channel: 'THE CHANNEL ID YOU COPIED'
+groupme:
+    botId: "THE GROUPME BOT's ID"
+    accessToken: "YOUR GROUPME ACCESS TOKEN"
+blacklist: ["username1", "username2", "username3"]
+```
