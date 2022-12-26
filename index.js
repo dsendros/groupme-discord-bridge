@@ -169,11 +169,6 @@ discordClient.on("presenceUpdate", (oldPresence, newPresence) => {
     activitiesStoppedDiff.forEach(stoppedPlaying => sendGroupMeMessage(user + " stopped playing " + stoppedPlaying.name, () => { }));
 
     /*
-    Activities.filter(o => !newActivities.some(n => n.name === o.name)).forEach(o => {
-      sendGroupMeMessage(user + " stopped playing " + o.name, () => { });
-    });
-    */
-    /*
     Compare the name of every item in oldActivities to every item in newActivities. 
     If the oldActivities item doesn't match any items in newActivities, print that the user has started playing that game.
     */
