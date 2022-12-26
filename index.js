@@ -108,7 +108,7 @@ function isBot(user)  {
   }
 
   function isBlacklisted(user) {
-    if config.blacklist !== null) {
+    if (config.blacklist !== null) {
       for (let i = 0; i < config.blacklist.length; i++) {
         let blacklistUser = config.blacklist[i];
         if (user === blacklistUser) {
