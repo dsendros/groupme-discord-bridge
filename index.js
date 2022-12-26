@@ -45,7 +45,8 @@ const defaultConfig = {
   groupme: {
     botId: "",
     accessToken: ""
-  }
+  },
+  blacklist: []
 };
 
 var config;
@@ -105,6 +106,16 @@ function getChannelFromVoiceState(voiceState) {
 function isBot(user)  {
   if (user.bot !== null) {
     return user.bot;
+  }
+
+  function isBlacklisted(user) {
+    for (let i = 0; i < config.blacklist.length; i++) {
+      let blacklistUser = config.blacklist[i];
+      if (user === blacklistUser) {
+        return true;
+      }
+    }
+    return false;
   }
 }
 
@@ -186,14 +197,14 @@ discordClient.on('voiceStateUpdate', (oldState, newState) => {
   if (newState.channelId === null) {
     const user = getUserNameFromVoiceState(oldState);
     const channel = getChannelFromVoiceState(oldState);
-    if (isBot(user) == false) {
+    if (isBot(user) && isBlacklisted(user) == false) {
       sendGroupMeMessage(user + " left " + channel, () => { });
     }    
   }
   else if (oldState.channelID == null) {
     const user = getUserNameFromVoiceState(newState);
     const channel = getChannelFromVoiceState(newState);
-    if (isBot(user) == false) {
+    if (isBot(user) && isBlacklisted(user) == false) {
       sendGroupMeMessage(user + " joined " + channel, () => { });
     }
   }
