@@ -1,4 +1,3 @@
-// TODO: Publish publicly
 /*
 groupme-discord-bridge
 A bridge bot which will send a message to a GroupMe Group any time a user enters or leaves a Discord channel or starts playing a game.
