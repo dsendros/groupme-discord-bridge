@@ -101,6 +101,13 @@ function getChannelFromVoiceState(voiceState) {
     return voiceState.channel.name;
   }
 }
+
+function isBot(user)  {
+  if (user.bot !== null) {
+    return user.bot;
+  }
+}
+
 // Program Main ----------------------------------------------------------------------------------------------------------------------------
 try {
   fs.mkdirSync(tempDir);
@@ -141,7 +148,7 @@ discordClient.on("presenceUpdate", (oldPresence, newPresence) => {
   }
   const newActivities = newPresence.activities.filter(array => array.type === ActivityType.Playing);
 
-  //If the oldActivties array exists and is a different length than the new Activities arra    
+  //If the oldActivities array exists and is a different length than the new Activities array    
   if (oldActivities !== null) {
     /*
     Compare the name of every item in newActivities to every item in oldActivities. 
@@ -170,7 +177,7 @@ discordClient.on("presenceUpdate", (oldPresence, newPresence) => {
 });
 
 /*
-If a user leaves or joins a channel, announce it to the Groupme. 
+If a user leaves or joins a channel, announce it to the GroupMe. 
 */
 discordClient.on('voiceStateUpdate', (oldState, newState) => {
   //Next line useful for debugging.
@@ -179,12 +186,16 @@ discordClient.on('voiceStateUpdate', (oldState, newState) => {
   if (newState.channelId === null) {
     const user = getUserNameFromVoiceState(oldState);
     const channel = getChannelFromVoiceState(oldState);
-    sendGroupMeMessage(user + " left " + channel, () => { });
+    if (isBot(user) == false) {
+      sendGroupMeMessage(user + " left " + channel, () => { });
+    }    
   }
   else if (oldState.channelID == null) {
     const user = getUserNameFromVoiceState(newState);
     const channel = getChannelFromVoiceState(newState);
-    sendGroupMeMessage(user + " joined " + channel, () => { });
+    if (isBot(user) == false) {
+      sendGroupMeMessage(user + " joined " + channel, () => { });
+    }
   }
 })
 
