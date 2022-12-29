@@ -193,14 +193,14 @@ discordClient.on('voiceStateUpdate', (oldState, newState) => {
   if (newState.channelId === null) {
     const user = getUserNameFromVoiceState(oldState);
     const channel = getChannelFromVoiceState(oldState);
-    if (isBot(user) && isBlacklisted(user) == false) {
+    if (!isBot(user) && !isBlacklisted(user)) {
       sendGroupMeMessage(user + " left " + channel, () => { });
     }    
   }
   else if (oldState.channelID == null) {
     const user = getUserNameFromVoiceState(newState);
     const channel = getChannelFromVoiceState(newState);
-    if (isBot(user) && isBlacklisted(user) == false) {
+    if (!isBot(user) && !isBlacklisted(user)) {
       sendGroupMeMessage(user + " joined " + channel, () => { });
     }
   }
